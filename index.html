@@ -1,258 +1,150 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アニタイム | Anime Blog</title>
-    <style>
-        :root {
-            --primary-color: #ff4d4d;
-            --bg-color: #f9f9f9;
-            --text-color: #333;
-            --card-bg: #fff;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 3px solid var(--primary-color);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            color: var(--primary-color);
-        }
-
-        nav {
-            margin-top: 1rem;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #666;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            padding: 0 20px;
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .container { grid-template-columns: 1fr; }
-        }
-
-        article {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        article:hover {
-            transform: translateY(-5px);
-        }
-
-        .category {
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        article h2 {
-            margin: 0.5rem 0;
-            font-size: 1.5rem;
-        }
-
-        .date {
-            color: #999;
-            font-size: 0.85rem;
-        }
-
-        .excerpt {
-            margin-top: 1rem;
-            color: #555;
-        }
-
-        .read-more {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* 侧边栏 */
-        aside {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            height: fit-content;
-        }
-
-        aside h3 {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .sidebar-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar-list li {
-            padding: 8px 0;
-            border-bottom: 1px dotted #ccc;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background: #333;
-            color: #fff;
-            margin-top: 2rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>アニメ日記ブログ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 0; background: #f5f5f7; color: #222; }
+    header { background: #ff6b81; color: #fff; padding: 20px; }
+    header h1 { margin: 0; font-size: 28px; }
+    header p { margin: 5px 0 0; font-size: 14px; }
+    main { max-width: 960px; margin: 20px auto; padding: 0 16px 40px; }
+    .post-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    article { background: #fff; border-radius: 8px; padding: 16px 18px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
+    article h2 { font-size: 18px; margin: 0 0 8px; color: #ff4b6e; }
+    .meta { font-size: 12px; color: #777; margin-bottom: 10px; }
+    .tag { display: inline-block; background: #ffe3ea; color: #c93b5a; border-radius: 999px; padding: 2px 8px; font-size: 11px; margin-right: 4px; }
+    p { font-size: 14px; line-height: 1.7; margin: 0 0 8px; }
+    footer { text-align: center; font-size: 12px; color: #888; padding: 16px 0 24px; }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>ロットのアニメ日和ブログ</h1>
+    <p>日本アニメの感想・考察・日常メモをゆるく綴る個人ブログ。</p>
+  </header>
 
-    <header>
-        <h1>アニタイム (AniTime)</h1>
-        <p>日本のアニメ文化と最新情報を届ける個人ブログ</p>
-        <nav>
-            <a href="#">ホーム</a>
-            <a href="#">新着記事</a>
-            <a href="#">ランキング</a>
-            <a href="#">お問い合わせ</a>
-        </nav>
-    </header>
+  <main>
+    <section class="post-list">
 
-    <div class="container">
-        <main>
-            <article>
-                <div class="category">新作レビュー</div>
-                <h2>2026年春アニメ期待度ランキング TOP5</h2>
-                <div class="date">2026.03.01</div>
-                <p class="excerpt">いよいよ始まる春シーズン。今期は人気作の続編が多く、ファンの期待も高まっています。注目すべき5作品をピックアップしました。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第1話：今期アニメの「推し」ランキング</h2>
+        <div class="meta">
+          <span class="tag">今期アニメ</span>
+          <span class="tag">ランキング</span>
+          2026-03-01
+        </div>
+        <p>今期は本当に豊作で、1話だけでは決めきれない作品ばかりです。作画のクオリティだけでなく、キャラクターの心情描写が丁寧な作品に特に惹かれました。</p>
+        <p>個人的な暫定1位は、日常とファンタジーが絶妙に混ざり合った学園もの。セリフ回しが自然で、見ていると登場人物たちと一緒に教室にいるような気分になります。</p>
+      </article>
 
-            <article>
-                <div class="category">聖地巡礼</div>
-                <h2>「君の名は。」の舞台、四ツ谷を歩く</h2>
-                <div class="date">2026.02.25</div>
-                <p class="excerpt">公開から数年経っても色褪せない感動。今回は須賀神社の階段を中心に、東京の聖地を巡ってきました。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第2話：OP・EDが神がかっているアニメ特集</h2>
+        <div class="meta">
+          <span class="tag">音楽</span>
+          <span class="tag">OP/ED</span>
+          2026-03-01
+        </div>
+        <p>アニメの第一印象を決めるのは、やっぱりOPとEDだと思います。映像と音楽が噛み合った瞬間、作品の世界観に一気に引き込まれます。</p>
+        <p>今期で特に印象に残っているのは、シティポップ風のOPと、静かなピアノから始まるED。どちらも歌詞がストーリーとリンクしていて、毎回スキップできません。</p>
+      </article>
 
-            <article>
-                <div class="category">考察</div>
-                <h2>新海誠監督が描く「空」の色の変遷</h2>
-                <div class="date">2026.02.20</div>
-                <p class="excerpt">「ほしのこえ」から最新作まで、監督の描く空はどのように進化してきたのか。光の描写に注目して考察します。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第3話：泣ける青春アニメに救われた夜</h2>
+        <div class="meta">
+          <span class="tag">青春</span>
+          <span class="tag">感想</span>
+          2026-03-01
+        </div>
+        <p>少し気持ちが沈んでいた夜、なんとなく再生した青春アニメに思い切り泣かされました。登場人物たちの不器用さや、うまく言葉にできない想いが胸に刺さります。</p>
+        <p>「報われないかもしれないけど、それでも好きでいたい」というセリフが、今の自分の気持ちと重なって、エンディング後もしばらく動けませんでした。</p>
+      </article>
 
-            <article>
-                <div class="category">グッズ</div>
-                <h2>秋葉原で見つけた激レアフィギュア紹介</h2>
-                <div class="date">2026.02.15</div>
-                <p class="excerpt">週末の秋葉原探索で見つけた、限定生産の1/7スケールフィギュア。そのクオリティの高さに驚愕しました。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第4話：作画崩壊とそれでも愛せる理由</h2>
+        <div class="meta">
+          <span class="tag">作画</span>
+          <span class="tag">制作裏話</span>
+          2026-03-01
+        </div>
+        <p>ときどき話題になる「作画崩壊」。もちろん綺麗な絵は嬉しいけれど、多少崩れていても、キャラや物語への愛があれば最後まで見届けたくなります。</p>
+        <p>むしろ、完璧じゃないからこそ、スタッフの挑戦やスケジュールの厳しさを想像してしまい、エンドロールに自然と頭を下げたくなります。</p>
+      </article>
 
-            <article>
-                <div class="category">音楽</div>
-                <h2>今期アニソン神曲ベスト3はこれだ！</h2>
-                <div class="date">2026.02.10</div>
-                <p class="excerpt">オープニングからエンディングまで、リピートが止まらない楽曲を詳しくレビューします。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第5話：日常系アニメがくれる「何もしない」勇気</h2>
+        <div class="meta">
+          <span class="tag">日常系</span>
+          <span class="tag">癒やし</span>
+          2026-03-01
+        </div>
+        <p>大きな事件もバトルもない日常系アニメは、忙しい日々の中で「立ち止まってもいい」と教えてくれます。キャラクターたちがただ笑って、ご飯を食べて、眠るだけの回が大好きです。</p>
+        <p>何かを成し遂げていなくても、そこにいていいんだと感じさせてくれる作品に、何度も救われてきました。</p>
+      </article>
 
-            <article>
-                <div class="category">声優</div>
-                <h2>若手声優の表現力に注目したい作品3選</h2>
-                <div class="date">2026.02.05</div>
-                <p class="excerpt">最近の若手声優さんの演技は本当に素晴らしいですね。特に感情の揺れが伝わる3作品をご紹介。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第6話：声優さんの演技に鳥肌が立ったシーン集</h2>
+        <div class="meta">
+          <span class="tag">声優</span>
+          <span class="tag">名演技</span>
+          2026-03-01
+        </div>
+        <p>感情が爆発する叫び声よりも、震えるような小さな「ありがとう」に心を持っていかれることがあります。声優さんの演技は、キャラクターに命を吹き込む魔法みたいです。</p>
+        <p>特に、普段は明るいキャラがふと弱音を漏らすシーンは、声のトーンの変化だけで涙腺が崩壊します。</p>
+      </article>
 
-            <article>
-                <div class="category">イベント</div>
-                <h2>AnimeJapan 2026 参加レポート</h2>
-                <div class="date">2026.01.28</div>
-                <p class="excerpt">世界最大級のアニメイベントへ潜入！各ブースの盛り上がりと新発表の情報をまとめました。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第7話：原作勢としてアニメ化を見守る楽しさと不安</h2>
+        <div class="meta">
+          <span class="tag">原作</span>
+          <span class="tag">アニメ化</span>
+          2026-03-01
+        </div>
+        <p>大好きな漫画がアニメ化されると聞いたときの高揚感と、「ちゃんとあのシーンまでやってくれるかな」という不安はセットです。</p>
+        <p>でも、動いて喋るキャラクターを初めて見た瞬間、そんな心配はどこかへ飛んでいきます。原作とは少し違う解釈も、別ルートの世界線として楽しむようにしています。</p>
+      </article>
 
-            <article>
-                <div class="category">クラシック</div>
-                <h2>「カウボーイビバップ」を今こそ見直すべき理由</h2>
-                <div class="date">2026.01.20</div>
-                <p class="excerpt">時代を超えて愛されるハードボイルドなSF。音楽、演出、キャラクター、すべてが完璧です。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第8話：背景美術だけでご飯が食べられるアニメ</h2>
+        <div class="meta">
+          <span class="tag">背景美術</span>
+          <span class="tag">世界観</span>
+          2026-03-01
+        </div>
+        <p>夕焼けの校舎、雨上がりの路地、静かな図書館。背景だけを眺めていたくなるアニメがあります。止め絵なのに、空気の温度や匂いまで伝わってくるようです。</p>
+        <p>そんな作品は、ストーリーが終わっても、ふとした瞬間に頭の中でシーンが再生されて、心の中の「帰りたい場所」になります。</p>
+      </article>
 
-            <article>
-                <div class="category">業界ニュース</div>
-                <h2>日本アニメの海外進出、新たな局面へ</h2>
-                <div class="date">2026.01.15</div>
-                <p class="excerpt">ストリーミングサービスの普及により、世界中で同時に日本のアニメが楽しめる時代の課題とは。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
+      <article>
+        <h2>第9話：アニメから学んだ「諦めない」ということ</h2>
+        <div class="meta">
+          <span class="tag">名言</span>
+          <span class="tag">人生観</span>
+          2026-03-01
+        </div>
+        <p>アニメの中の主人公たちは、何度倒れても立ち上がります。現実ではそんなに強くなれないけれど、「もう少しだけ頑張ってみよう」と思わせてくれるセリフがいくつもあります。</p>
+        <p>特に、脇役がぽつりとこぼす一言に救われることが多くて、気づけばノートに書き留めていました。</p>
+      </article>
 
-            <article>
-                <div class="category">その他</div>
-                <h2>私のアニメ鑑賞環境を紹介します</h2>
-                <div class="date">2026.01.05</div>
-                <p class="excerpt">プロジェクター？それとも有機EL？自宅で最高のアニメ体験をするための機材選びについて。</p>
-                <a href="#" class="read-more">続きを読む →</a>
-            </article>
-        </main>
+      <article>
+        <h2>第10話：これから観たい「積みアニメ」リスト</h2>
+        <div class="meta">
+          <span class="tag">積みアニメ</span>
+          <span class="tag">メモ</span>
+          2026-03-01
+        </div>
+        <p>気になっているのに、まだ再生ボタンを押せていない作品が山ほどあります。評判を聞きすぎて、逆にハードルが上がってしまったタイトルも。</p>
+        <p>でも、いつか心がぽっかり空いた日に、一気に観るのも贅沢かなと思っています。その日の自分に一番しっくりくる一本を選ぶのが、今から楽しみです。</p>
+      </article>
 
-        <aside>
-            <h3>カテゴリー</h3>
-            <ul class="sidebar-list">
-                <li>新作レビュー (15)</li>
-                <li>聖地巡礼 (8)</li>
-                <li>考察・解析 (12)</li>
-                <li>アニソン (10)</li>
-                <li>イベント情報 (5)</li>
-            </ul>
+    </section>
+  </main>
 
-            <h3 style="margin-top: 2rem;">最近のコメント</h3>
-            <div style="font-size: 0.9rem; color: #666;">
-                <p><strong>田中:</strong> 春アニメ楽しみですね！</p>
-                <p><strong>佐藤:</strong> 聖地巡礼の記事、参考になりました。</p>
-            </div>
-        </aside>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 アニタイム. All rights reserved.</p>
-    </footer>
-
+  <footer>
+    © 2026 ロットのアニメ日和ブログ
+  </footer>
 </body>
 </html>
+```
